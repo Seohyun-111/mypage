@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seohyun's page</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+            color: #EE97C8;
+            line-height: 1.6;
+            background-color: #f7f7f9;
+        }
+
+        header, main, footer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        header h1 {
+            font-size: 32px;
+            color: #EE97C8;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 16px;
+            color: #FFBBE2;
+            margin-bottom: 16px;
+        }
+
+        nav a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #FFBBE2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 24px 0;
+        }
+
+
+        section, article {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 4px rgba(255, 187, 187, 0.06);
+        }
+
+        section h2, article h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: #FF8CC2;
+        }
+
+
+        #about p {
+            text-align: center;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        article p {
+            font-style: italic;
+            font-size: 18px;
+            text-align: center;
+            color: #EE97C8;
+        }
+
+
+        form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ffe7e7;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        form button {
+            background-color: pink;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        form button:hover {
+            background-color: pink;
+        }
+
+        footer {
+            text-align: center;
+            color: #D576AC;
+            font-size: 14px;
+            padding-bottom: 40px;
+        }
+
+        footer a {
+            color: #D576AC;
+        }
+
+        .skill-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+        
+            gap: 12px;
+        }
+
+        .skill-list li {
+            text-align: center;
+        }
+
+        .skill-list li span {
+            display: block;
+            background-color: #ffdff4;
+            color: pink;
+            font-weight: bold;
+            padding: 16px 0;
+            border-radius: 8px;
+        }
+        @media (max-width: 600px) {
+            .skill-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Seohyun's Page</h1>
+      <img src="다운로드 (1).jpg" alt="메인 사진" width="160">
+
+        <nav>
+            <a href="#about">I'm</a> |
+            <a href="#skill">Skills</a> |
+            <a href="#contact">Kitty</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+
+        <section id="about">
+<center> 
+            <img src="다운로드.gif" alt="두번째 사진" width="160"></center>
+
+
+            <p>
+                My dream ☁️ : UI/UX Designer
+            </p>
+        </section>
+
+        <section id="skill">
+            <h2>✨ My Skills ✨</h2>
+
+            <ul class="skill-list">
+                <li><span>Photoshop</span></li>
+                <li><span>After Effects</span></li>
+                <li><span>Figma</span></li>
+                <li><span>Blender</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>My favorite Sanrio 💕</h2>
+            <ol>
+                <li>🥇 헬로키티</li>
+                <li>🥈 슈가바니즈 </li>
+                <li>🥉 마이멜로디 </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>헬로키티 만화 시청하기 ⏪▶️⏩ ⬇️⬇️</h2>
+            <a href="https://www.youtube.com/watch?v=pRJ-Dai3oB0&list=PLN9X97LDR0XuH5iW6C4AAsiEDNMNke_Ks" target="_blank">헬로키티 시청하기</a>
+        </section>
+
+        <article>
+            <h2>Seohyun's Pick !<h2>
+            <p>"내 자신을 제일 사랑하라."</p>
+        </article>
+
+        <section id="contact">
+            <h2>📨 최애 캐릭터 보내기</h2>
+
+            <form>
+                <div>
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="message">최애 캐릭터는?</label>
+                    <textarea id="message" name="message" rows="5" cols="40" placeholder="메시지를 입력하세요"></textarea>
+                </div>
+
+                <br>
+
+                <button type="submit">제출</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Seohyun</p>
+        <p>헬로키티에게 메일을 보내기 : <a href="mailto:nkkxc0923@gmail.com">nkkxc0923@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>
