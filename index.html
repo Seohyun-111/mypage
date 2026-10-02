@@ -1,252 +1,527 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seohyun's page</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-            color: #EE97C8;
-            line-height: 1.6;
-            background-color: #f7f7f9;
-        }
-
-        header, main, footer {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 24px 20px;
-        }
-
-        header {
-            text-align: center;
-            padding-top: 40px;
-        }
-
-        header h1 {
-            font-size: 32px;
-            color: #EE97C8;
-            margin-bottom: 8px;
-        }
-
-        header p {
-            font-size: 16px;
-            color: #FFBBE2;
-            margin-bottom: 16px;
-        }
-
-        nav a {
-            display: inline-block;
-            margin: 0 10px;
-            color: #FFBBE2;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid #ddd;
-            margin: 24px 0;
-        }
-
-
-        section, article {
-            background: #fff;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 1px 4px rgba(255, 187, 187, 0.06);
-        }
-
-        section h2, article h2 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            color: #FF8CC2;
-        }
-
-
-        #about p {
-            text-align: center;
-        }
-
-        ul, ol {
-            margin-left: 20px;
-            margin-bottom: 8px;
-        }
-
-        article p {
-            font-style: italic;
-            font-size: 18px;
-            text-align: center;
-            color: #EE97C8;
-        }
-
-
-        form label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        form input, form textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ffe7e7;
-            border-radius: 6px;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        form button {
-            background-color: pink;
-            color: #fff;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        form button:hover {
-            background-color: pink;
-        }
-
-        footer {
-            text-align: center;
-            color: #D576AC;
-            font-size: 14px;
-            padding-bottom: 40px;
-        }
-
-        footer a {
-            color: #D576AC;
-        }
-
-        .skill-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-
-        
-            gap: 12px;
-        }
-
-        .skill-list li {
-            text-align: center;
-        }
-
-        .skill-list li span {
-            display: block;
-            background-color: #ffdff4;
-            color: pink;
-            font-weight: bold;
-            padding: 16px 0;
-            border-radius: 8px;
-        }
-        @media (max-width: 600px) {
-            .skill-list {
-                grid-template-columns: repeat(2, 1fr);
+    <title>나의 포트폴리오 & 방명록</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        strawberry: {
+                            50: '#fff5f7',
+                            100: '#ffe3e8',
+                            200: '#ffd1dc', // 딸기우유 메인 연한 핑크
+                            300: '#ffb3c3',
+                            400: '#ff7fa0',
+                            500: '#ff4d79',
+                            600: '#e6004c', // 진핑크 포인트
+                            700: '#c2003f',
+                            800: '#990033',
+                            900: '#730026',
+                        },
+                        hotpink: '#ff1493',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+                    }
+                }
             }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fff9fa;
+            color: #4a4a4a;
+        }
+        /* 커스텀 스크롤바 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff5f7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ffb3c3;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff7fa0;
         }
     </style>
 </head>
+<body class="bg-strawberry-50/50 antialiased selection:bg-strawberry-200 selection:text-strawberry-900">
 
-<body>
-
-    <header>
-        <h1>Seohyun's Page</h1>
-      <img src="다운로드 (1).jpg" alt="메인 사진" width="160">
-
-        <nav>
-            <a href="#about">I'm</a> |
-            <a href="#skill">Skills</a> |
-            <a href="#contact">Kitty</a>
-        </nav>
+    <!-- 네비게이션 바 -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-strawberry-100 shadow-sm transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold bg-gradient-to-r from-strawberry-600 to-hotpink bg-clip-text text-transparent tracking-tight">
+                🌸 Strawberry Log
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+                <a href="#about" class="hover:text-strawberry-600 transition-colors">About</a>
+                <a href="#portfolio" class="hover:text-strawberry-600 transition-colors">Portfolio</a>
+                <a href="#guestbook" class="hover:text-strawberry-600 transition-colors">Guestbook</a>
+                <a href="#contact" class="hover:text-strawberry-600 transition-colors">Contact</a>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-strawberry-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- 모바일 드롭다운 메뉴 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-strawberry-100 px-6 py-4 space-y-3 shadow-lg">
+            <a href="#about" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">About</a>
+            <a href="#portfolio" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Portfolio</a>
+            <a href="#guestbook" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Guestbook</a>
+            <a href="#contact" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Contact</a>
+        </div>
     </header>
 
-    <hr>
-
-    <main>
-
-        <section id="about">
-<center> 
-            <img src="다운로드.gif" alt="두번째 사진" width="160"></center>
-
-
-            <p>
-                My dream ☁️ : UI/UX Designer
-            </p>
-        </section>
-
-        <section id="skill">
-            <h2>✨ My Skills ✨</h2>
-
-            <ul class="skill-list">
-                <li><span>Photoshop</span></li>
-                <li><span>After Effects</span></li>
-                <li><span>Figma</span></li>
-                <li><span>Blender</span></li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>My favorite Sanrio 💕</h2>
-            <ol>
-                <li>🥇 헬로키티</li>
-                <li>🥈 슈가바니즈 </li>
-                <li>🥉 마이멜로디 </li>
-            </ol>
-        </section>
-
-        <section>
-            <h2>헬로키티 만화 시청하기 ⏪▶️⏩ ⬇️⬇️</h2>
-            <a href="https://www.youtube.com/watch?v=pRJ-Dai3oB0&list=PLN9X97LDR0XuH5iW6C4AAsiEDNMNke_Ks" target="_blank">헬로키티 시청하기</a>
-        </section>
-
-        <article>
-            <h2>Seohyun's Pick !<h2>
-            <p>"내 자신을 제일 사랑하라."</p>
-        </article>
-
-        <section id="contact">
-            <h2>📨 최애 캐릭터 보내기</h2>
-
-            <form>
-                <div>
-                    <label for="name">이름</label>
-                    <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+    <!-- 이미지 슬라이드 섹션 (4장) -->
+    <section class="pt-28 pb-12 max-w-5xl mx-auto px-6">
+        <div class="relative w-full h-[320px] sm:h-[450px] rounded-3xl overflow-hidden shadow-xl bg-strawberry-100 border-4 border-white">
+            <!-- 슬라이드 아이템 1 -->
+            <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-100 flex flex-col items-center justify-center bg-gradient-to-br from-strawberry-200 to-strawberry-400 text-white p-6 text-center">
+                <!-- 추후 실제 이미지 교체 시 아래 img 태그 사용 가능: <img src="이미지경로1.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Slide 1"> -->
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div class="relative z-10 max-w-lg">
+                    <span class="bg-white/30 backdrop-blur-sm text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">Welcome</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mb-3 drop-shadow-sm">안녕하세요, 달콤한 개발자입니다</h2>
+                    <p class="text-sm sm:text-base text-strawberry-50 font-light">따뜻하고 감각적인 웹 경험을 만들어가는 여정에 오신 것을 환영합니다.</p>
                 </div>
-
-                <br>
-
-                <div>
-                    <label for="message">최애 캐릭터는?</label>
-                    <textarea id="message" name="message" rows="5" cols="40" placeholder="메시지를 입력하세요"></textarea>
+            </div>
+            <!-- 슬라이드 아이템 2 -->
+            <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex flex-col items-center justify-center bg-gradient-to-br from-pink-300 to-strawberry-600 text-white p-6 text-center">
+                <div class="relative z-10 max-w-lg">
+                    <span class="bg-white/30 backdrop-blur-sm text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">Passion</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mb-3 drop-shadow-sm">디테일에 진심을 담습니다</h2>
+                    <p class="text-sm sm:text-base text-strawberry-50 font-light">사용자 중심의 직관적인 UI와 부드러운 인터랙션을 연구합니다.</p>
                 </div>
+            </div>
+            <!-- 슬라이드 아이템 3 -->
+            <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex flex-col items-center justify-center bg-gradient-to-br from-strawberry-400 to-hotpink text-white p-6 text-center">
+                <div class="relative z-10 max-w-lg">
+                    <span class="bg-white/30 backdrop-blur-sm text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">Creativity</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mb-3 drop-shadow-sm">트렌디한 컬러와 감성</h2>
+                    <p class="text-sm sm:text-base text-strawberry-50 font-light">딸기우유빛 파스텔톤과 진핑크의 조화로 독창적인 분위기를 자아냅니다.</p>
+                </div>
+            </div>
+            <!-- 슬라이드 아이템 4 -->
+            <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex flex-col items-center justify-center bg-gradient-to-br from-hotpink to-strawberry-800 text-white p-6 text-center">
+                <div class="relative z-10 max-w-lg">
+                    <span class="bg-white/30 backdrop-blur-sm text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block">Future</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mb-3 drop-shadow-sm">소통하며 성장하는 공간</h2>
+                    <p class="text-sm sm:text-base text-strawberry-50 font-light">하단 방명록을 통해 자유롭게 발자취를 남겨주세요!</p>
+                </div>
+            </div>
 
-                <br>
+            <!-- 슬라이드 이전/다음 버튼 -->
+            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/70 text-gray-800 p-2.5 rounded-full transition-colors backdrop-blur-sm shadow-md focus:outline-none">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/70 text-gray-800 p-2.5 rounded-full transition-colors backdrop-blur-sm shadow-md focus:outline-none">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
 
-                <button type="submit">제출</button>
+            <!-- 슬라이드 인디케이터 (닷츠) -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+                <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="0"></button>
+                <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="1"></button>
+                <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="2"></button>
+                <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="3"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About 섹션 -->
+    <section id="about" class="py-16 max-w-5xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <span class="text-strawberry-600 font-bold tracking-wider uppercase text-sm">About Me</span>
+            <h2 class="text-3xl font-extrabold text-gray-800 mt-1">저를 소개합니다</h2>
+            <div class="w-16 h-1 bg-gradient-to-r from-strawberry-400 to-hotpink mx-auto mt-3 rounded-full"></div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+            <div class="flex justify-center">
+                <div class="relative w-48 h-48 sm:w-60 sm:h-60 rounded-3xl bg-gradient-to-tr from-strawberry-200 to-hotpink p-1.5 shadow-xl">
+                    <div class="w-full h-full bg-white rounded-[22px] flex items-center justify-center overflow-hidden">
+                        <!-- 프로필 이미지 대체 영역 -->
+                        <div class="text-center p-4">
+                            <span class="text-5xl">🍓</span>
+                            <p class="text-xs text-gray-400 mt-2 font-medium">Profile Image</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-2 space-y-4 bg-white p-8 rounded-3xl shadow-md border border-strawberry-100">
+                <h3 class="text-2xl font-bold text-gray-800">감각적인 디자인과 코딩을 사랑합니다 ✨</h3>
+                <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+                    안녕하세요! 사용자에게 편안함을 주는 인터페이스와 사랑스러운 컬러 감성을 웹 기술로 구현하는 프론트엔드 개발자 지망생입니다. 딸기우유빛의 포근함과 진핑크의 열정을 품고 매일 새로운 코드를 짜고 있습니다.
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                    <div class="bg-strawberry-50 p-3 rounded-xl border border-strawberry-100 text-center">
+                        <span class="block font-bold text-strawberry-700 text-sm">Frontend</span>
+                        <span class="text-xs text-gray-500">HTML5, CSS3, JS</span>
+                    </div>
+                    <div class="bg-strawberry-50 p-3 rounded-xl border border-strawberry-100 text-center">
+                        <span class="block font-bold text-strawberry-700 text-sm">Styling</span>
+                        <span class="text-xs text-gray-500">Tailwind CSS</span>
+                    </div>
+                    <div class="bg-strawberry-50 p-3 rounded-xl border border-strawberry-100 text-center col-span-2 sm:col-span-1">
+                        <span class="block font-bold text-strawberry-700 text-sm">Vibe</span>
+                        <span class="text-xs text-gray-500">Sweet & Modern</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio 섹션 -->
+    <section id="portfolio" class="py-16 bg-gradient-to-b from-transparent via-strawberry-100/30 to-transparent">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-strawberry-600 font-bold tracking-wider uppercase text-sm">Portfolio</span>
+                <h2 class="text-3xl font-extrabold text-gray-800 mt-1">프로젝트 작업물</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-strawberry-400 to-hotpink mx-auto mt-3 rounded-full"></div>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 프로젝트 카드 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-strawberry-100 group flex flex-col">
+                    <div class="h-48 bg-gradient-to-br from-strawberry-200 to-strawberry-400 flex items-center justify-center relative overflow-hidden">
+                        <span class="text-4xl group-hover:scale-110 transition-transform duration-300">🍰</span>
+                        <div class="absolute inset-0 bg-hotpink/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-strawberry-600 bg-strawberry-50 px-2.5 py-1 rounded-md">Web App</span>
+                            <h3 class="text-xl font-bold text-gray-800 mt-2">딸기 디저트 쇼케이스</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-2 line-clamp-2">파스텔톤 감성을 살려 제작한 반응형 디저트 소개 웹사이트입니다.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-xs text-gray-400">2026.03</span>
+                            <a href="#contact" class="text-xs font-bold text-strawberry-600 hover:text-hotpink transition-colors">자세히 보기 &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 프로젝트 카드 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-strawberry-100 group flex flex-col">
+                    <div class="h-48 bg-gradient-to-br from-pink-300 to-strawberry-500 flex items-center justify-center relative overflow-hidden">
+                        <span class="text-4xl group-hover:scale-110 transition-transform duration-300">🧸</span>
+                        <div class="absolute inset-0 bg-hotpink/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-strawberry-600 bg-strawberry-50 px-2.5 py-1 rounded-md">Interactive</span>
+                            <h3 class="text-xl font-bold text-gray-800 mt-2">다이어리 투두리스트</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-2 line-clamp-2">일상을 기록하고 관리할 수 있는 아기자기한 일정 관리 애플리케이션입니다.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-xs text-gray-400">2026.02</span>
+                            <a href="#contact" class="text-xs font-bold text-strawberry-600 hover:text-hotpink transition-colors">자세히 보기 &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 프로젝트 카드 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-strawberry-100 group flex flex-col sm:col-span-2 lg:col-span-1">
+                    <div class="h-48 bg-gradient-to-br from-strawberry-400 to-hotpink flex items-center justify-center relative overflow-hidden">
+                        <span class="text-4xl group-hover:scale-110 transition-transform duration-300">💌</span>
+                        <div class="absolute inset-0 bg-hotpink/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-strawberry-600 bg-strawberry-50 px-2.5 py-1 rounded-md">Community</span>
+                            <h3 class="text-xl font-bold text-gray-800 mt-2">러블리 방명록 플랫폼</h3>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-2 line-clamp-2">실시간 인터랙션과 로컬 스토리지를 활용한 따뜻한 소통 공간입니다.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-xs text-gray-400">2026.01</span>
+                            <a href="#guestbook" class="text-xs font-bold text-strawberry-600 hover:text-hotpink transition-colors">체험하기 &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 방명록 섹션 (자바스크립트 + 로컬스토리지 활용) -->
+    <section id="guestbook" class="py-16 max-w-4xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <span class="text-strawberry-600 font-bold tracking-wider uppercase text-sm">Guestbook</span>
+            <h2 class="text-3xl font-extrabold text-gray-800 mt-1">소중한 방명록을 남겨주세요</h2>
+            <p class="text-gray-500 text-sm mt-2">작성하신 내용은 브라우저에 안전하게 저장되어 실시간으로 유지됩니다.</p>
+            <div class="w-16 h-1 bg-gradient-to-r from-strawberry-400 to-hotpink mx-auto mt-3 rounded-full"></div>
+        </div>
+
+        <!-- 방명록 입력 폼 -->
+        <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-strawberry-200 mb-10">
+            <form id="guestbook-form" class="space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="author" class="block text-xs font-bold text-gray-700 uppercase mb-1">이름 / 닉네임</label>
+                        <input type="text" id="author" required placeholder="예: 딸기공주" class="w-full px-4 py-3 rounded-xl border border-strawberry-100 bg-strawberry-50/50 focus:outline-none focus:ring-2 focus:ring-strawberry-400 text-sm transition-all">
+                    </div>
+                    <div>
+                        <label for="password" class="block text-xs font-bold text-gray-700 uppercase mb-1">비밀번호 (삭제용)</label>
+                        <input type="password" id="password" required placeholder="비밀번호 4자리" class="w-full px-4 py-3 rounded-xl border border-strawberry-100 bg-strawberry-50/50 focus:outline-none focus:ring-2 focus:ring-strawberry-400 text-sm transition-all">
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="block text-xs font-bold text-gray-700 uppercase mb-1">남기고 싶은 말</label>
+                    <textarea id="message" rows="3" required placeholder="따뜻한 응원의 한마디를 남겨주세요! 💕" class="w-full px-4 py-3 rounded-xl border border-strawberry-100 bg-strawberry-50/50 focus:outline-none focus:ring-2 focus:ring-strawberry-400 text-sm transition-all resize-none"></textarea>
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="bg-gradient-to-r from-strawberry-500 to-hotpink hover:from-strawberry-600 hover:to-pink-600 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all text-sm tracking-wide">
+                        방명록 등록하기 🍓
+                    </button>
+                </div>
             </form>
-        </section>
+        </div>
 
-    </main>
+        <!-- 방명록 리스트 표시 영역 -->
+        <div id="guestbook-list" class="space-y-4">
+            <!-- 자바스크립트로 동적 렌더링됨 -->
+        </div>
+    </section>
 
-    <footer>
-        <p>© 2026 Seohyun</p>
-        <p>헬로키티에게 메일을 보내기 : <a href="mailto:nkkxc0923@gmail.com">nkkxc0923@gmail.com</a></p>
+    <!-- Contact 섹션 -->
+    <section id="contact" class="py-16 bg-white border-t border-strawberry-100">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <span class="text-strawberry-600 font-bold tracking-wider uppercase text-sm">Contact</span>
+            <h2 class="text-3xl font-extrabold text-gray-800 mt-1">연락처 및 소통 채널</h2>
+            <p class="text-gray-500 text-sm mt-2 mb-8">궁금한 점이 있으시거나 협업을 원하시면 언제든 편하게 연락 주세요!</p>
+            
+            <div class="grid sm:grid-cols-3 gap-4 mb-8">
+                <a href="mailto:example@strawberry.dev" class="p-5 rounded-2xl bg-strawberry-50 border border-strawberry-100 hover:border-strawberry-400 transition-all group flex flex-col items-center">
+                    <span class="text-2xl mb-2">📧</span>
+                    <span class="text-xs font-bold text-gray-700 uppercase">Email</span>
+                    <span class="text-xs text-strawberry-600 mt-1 group-hover:underline">hello@strawberry.dev</span>
+                </a>
+                <a href="https://github.com" target="_blank" class="p-5 rounded-2xl bg-strawberry-50 border border-strawberry-100 hover:border-strawberry-400 transition-all group flex flex-col items-center">
+                    <span class="text-2xl mb-2">💻</span>
+                    <span class="text-xs font-bold text-gray-700 uppercase">GitHub</span>
+                    <span class="text-xs text-strawberry-600 mt-1 group-hover:underline">github.com/strawberry</span>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="p-5 rounded-2xl bg-strawberry-50 border border-strawberry-100 hover:border-strawberry-400 transition-all group flex flex-col items-center">
+                    <span class="text-2xl mb-2">📸</span>
+                    <span class="text-xs font-bold text-gray-700 uppercase">Instagram</span>
+                    <span class="text-xs text-strawberry-600 mt-1 group-hover:underline">@strawberry_vibe</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="py-8 bg-strawberry-900 text-strawberry-100 text-center text-xs">
+        <p>&copy; 2026 Strawberry Portfolio. All rights reserved. 🍓</p>
     </footer>
 
+    <!-- 자바스크립트 코드 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. 모바일 메뉴 토글 기능
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // 2. 4장 이미지 슬라이드 기능
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            let slideInterval;
+
+            function showSlide(index) {
+                if (index >= totalSlides) currentSlide = 0;
+                else if (index < 0) currentSlide = totalSlides - 1;
+                else currentSlide = index;
+
+                slides.forEach((slide, i) => {
+                    if (i === currentSlide) {
+                        slide.classList.remove('opacity-0');
+                        slide.classList.add('opacity-100');
+                    } else {
+                        slide.classList.remove('opacity-100');
+                        slide.classList.add('opacity-0');
+                    }
+                });
+
+                dots.forEach((dot, i) => {
+                    if (i === currentSlide) {
+                        dot.classList.add('bg-white', 'w-6');
+                        dot.classList.remove('bg-white/60', 'w-3');
+                    } else {
+                        dot.classList.remove('bg-white', 'w-6');
+                        dot.classList.add('bg-white/60', 'w-3');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            // 자동 슬라이드 시작 (4초 간격)
+            function startSlideTimer() {
+                slideInterval = setInterval(nextSlide, 4000);
+            }
+
+            function resetSlideTimer() {
+                clearInterval(slideInterval);
+                startSlideTimer();
+            }
+
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetSlideTimer();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetSlideTimer();
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    const idx = parseInt(e.target.getAttribute('data-index'));
+                    showSlide(idx);
+                    resetSlideTimer();
+                });
+            });
+
+            // 초기화
+            showSlide(0);
+            startSlideTimer();
+
+            // 3. 방명록 기능 (JavaScript + LocalStorage)
+            const form = document.getElementById('guestbook-form');
+            const guestbookList = document.getElementById('guestbook-list');
+
+            // 로컬 스토리지에서 방명록 데이터 불러오기
+            function getGuestbookData() {
+                const data = localStorage.getItem('strawberry_guestbook');
+                return data ? JSON.parse(data) : [];
+            }
+
+            // 방명록 데이터 저장하기
+            function saveGuestbookData(data) {
+                localStorage.setItem('strawberry_guestbook', JSON.stringify(data));
+            }
+
+            // 방명록 화면에 렌더링하기
+            function renderGuestbook() {
+                const entries = getGuestbookData();
+                guestbookList.innerHTML = '';
+
+                if (entries.length === 0) {
+                    guestbookList.innerHTML = `
+                        <div class="text-center py-10 bg-white rounded-3xl border border-strawberry-100 text-gray-400 text-sm">
+                            아직 작성된 방명록이 없습니다. 첫 번째 주인공이 되어주세요! ✨
+                        </div>
+                    `;
+                    return;
+                }
+
+                entries.forEach((entry) => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-white p-6 rounded-2xl shadow-sm border border-strawberry-100 flex flex-col justify-between transition-all hover:shadow-md';
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-gray-800 text-sm flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-strawberry-500 inline-block"></span>
+                                    ${escapeHTML(entry.author)}
+                                </span>
+                                <span class="text-xs text-gray-400">${entry.date}</span>
+                            </div>
+                            <p class="text-gray-600 text-sm whitespace-pre-line mt-1">${escapeHTML(entry.message)}</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-strawberry-50 flex justify-end">
+                            <button onclick="deleteGuestbookEntry(${entry.id})" class="text-xs text-gray-400 hover:text-red-500 transition-colors">
+                                삭제
+                            </button>
+                        </div>
+                    `;
+                    guestbookList.appendChild(card);
+                });
+            }
+
+            // XSS 방지용 유틸 함수
+            function escapeHTML(str) {
+                return str.replace(/[&<>'"]/g, 
+                    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+                );
+            }
+
+            // 방명록 등록 이벤트
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const authorInput = document.getElementById('author');
+                const passwordInput = document.getElementById('password');
+                const messageInput = document.getElementById('message');
+
+                const newEntry = {
+                    id: Date.now(),
+                    author: authorInput.value.trim(),
+                    password: passwordInput.value.trim(),
+                    message: messageInput.value.trim(),
+                    date: new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+                };
+
+                const entries = getGuestbookData();
+                entries.unshift(newEntry); // 최신글이 위로 오도록 추가
+                saveGuestbookData(entries);
+
+                // 폼 초기화
+                authorInput.value = '';
+                passwordInput.value = '';
+                messageInput.value = '';
+
+                renderGuestbook();
+            });
+
+            // 전역 함수로 삭제 등록 (HTML 인라인 이벤트용)
+            window.deleteGuestbookEntry = function(id) {
+                const password = prompt('작성 시 입력한 비밀번호 4자리를 입력해주세요:');
+                if (!password) return;
+
+                let entries = getGuestbookData();
+                const target = entries.find(item => item.id === id);
+
+                if (target && target.password === password) {
+                    entries = entries.filter(item => item.id !== id);
+                    saveGuestbookData(entries);
+                    renderGuestbook();
+                } else {
+                    alert('비밀번호가 일치하지 않습니다.');
+                }
+            };
+
+            // 초기 방명록 로드
+            renderGuestbook();
+        });
+    </script>
 </body>
 </html>
