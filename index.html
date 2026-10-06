@@ -69,6 +69,7 @@
                 <a href="#portfolio" class="hover:text-strawberry-600 transition-colors">Portfolio</a>
                 <a href="#guestbook" class="hover:text-strawberry-600 transition-colors">Guestbook</a>
                 <a href="#contact" class="hover:text-strawberry-600 transition-colors">Contact</a>
+                <a href="#game" class="hover:text-strawberry-600 transition-colors">Mini Game</a>
             </nav>
             <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-strawberry-600 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,10 +83,11 @@
             <a href="#portfolio" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Portfolio</a>
             <a href="#guestbook" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Guestbook</a>
             <a href="#contact" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Contact</a>
+            <a href="#game" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Mini Game</a>
         </div>
     </header>
 
- <!-- 이미지 슬라이드 섹션 (4장) -->
+    <!-- 이미지 슬라이드 섹션 (4장) -->
     <section class="pt-28 pb-12 max-w-5xl mx-auto px-6">
         <div class="relative w-full h-[320px] sm:h-[450px] rounded-3xl overflow-hidden shadow-xl bg-strawberry-100 border-4 border-white">
             
@@ -114,7 +116,6 @@
                 <img src="다운로드 (5).jpg" class="absolute inset-0 w-full h-full object-cover" alt="Slide 3">
                 <div class="relative z-10 max-w-lg">
                     <span class="bg-white/70 backdrop-blur-sm text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest mb-3 inline-block text-gray-800 shadow-sm">Creativity</span>
-                 
                 </div>
             </div>
 
@@ -129,23 +130,21 @@
             </div>
 
         </div>
-    </section>
 
-            <!-- 슬라이드 이전/다음 버튼 -->
-            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/70 text-gray-800 p-2.5 rounded-full transition-colors backdrop-blur-sm shadow-md focus:outline-none">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-            </button>
-            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/70 text-gray-800 p-2.5 rounded-full transition-colors backdrop-blur-sm shadow-md focus:outline-none">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </button>
+        <!-- 슬라이드 이전/다음 버튼 -->
+        <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/70 text-gray-800 p-2.5 rounded-full transition-colors backdrop-blur-sm shadow-md focus:outline-none">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/70 text-gray-800 p-2.5 rounded-full transition-colors backdrop-blur-sm shadow-md focus:outline-none">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
 
-            <!-- 슬라이드 인디케이터 (닷츠) -->
-            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
-                <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="0"></button>
-                <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="1"></button>
-                <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="2"></button>
-                <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="3"></button>
-            </div>
+        <!-- 슬라이드 인디케이터 (닷츠) -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+            <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="0"></button>
+            <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="1"></button>
+            <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="2"></button>
+            <button class="dot w-3 h-3 rounded-full bg-white/60 transition-all focus:outline-none" data-index="3"></button>
         </div>
     </section>
 
@@ -157,36 +156,33 @@
             <div class="w-16 h-1 bg-gradient-to-r from-strawberry-400 to-hotpink mx-auto mt-3 rounded-full"></div>
         </div>
         <!-- 프로필 카드 및 전체 내용 영역 -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-6 py-8">
-    
-    <!-- 1. 프로필 이미지 카드 (🍓 이모티콘 자리에 사진 삽입) -->
-    <div class="bg-white p-6 rounded-3xl shadow-md border border-strawberry-100 flex flex-col items-center justify-center text-center">
-        <img src="다운로드 (7).jpg" alt="프로필 이미지" class="w-50 h-50 rounded-2xl object-cover shadow-md border-2 border-strawberry-200">
-    </div>
-
-    <!-- 2. 사용자 친화적인 UI 텍스트 & 스킬 카드 (보내주신 내용 그대로 유지) -->
-    <div class="md:col-span-2 space-y-4 bg-white p-8 rounded-3xl shadow-md border border-strawberry-100">
-        <h3 class="text-2xl font-bold text-gray-800">사용자 친화적인 UI를 선호합니다 ✨</h3>
-        <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
-            안녕하세요! 사용자에게 편안함을 주는 인터페이스와 사랑스러운 컬러 감성을 기술로 구현하는 UI/UX 디자이너 지망생입니다. 열정을 품고 매일 새로운 디자인을 하고 있습니다.
-        </p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-            <div class="bg-strawberry-50 p-3 rounded-xl border border-strawberry-100 text-center">
-                <span class="block font-bold text-strawberry-700 text-sm">Photoshop</span>
-                <span class="text-xs text-gray-500">Post/Image</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-6 py-8">
+            <!-- 1. 프로필 이미지 카드 -->
+            <div class="bg-white p-6 rounded-3xl shadow-md border border-strawberry-100 flex flex-col items-center justify-center text-center">
+                <img src="다운로드 (7).jpg" alt="프로필 이미지" class="w-50 h-50 rounded-2xl object-cover shadow-md border-2 border-strawberry-200">
             </div>
-            <div class="bg-strawberry-50 p-3 rounded-xl border border-strawberry-100 text-center">
-                <span class="block font-bold text-strawberry-700 text-sm">Figma</span>
-                <span class="text-xs text-gray-500">UI Design</span>
-            </div>
-            <div class="bg-strawberry-50 p-3 rounded-xl border border-strawberry-100 text-center col-span-2 sm:col-span-1">
-                <span class="block font-bold text-strawberry-700 text-sm">After effcts</span>
-                <span class="text-xs text-gray-500">Gif/Video</span>
+            <!-- 2. 사용자 친화적인 UI 텍스트 & 스킬 카드 -->
+            <div class="md:col-span-2 space-y-4 bg-white p-8 rounded-3xl shadow-md border border-strawberry-100">
+                <h3 class="text-2xl font-bold text-gray-800">사용자 친화적인 UI를 선호합니다 ✨</h3>
+                <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+                    안녕하세요! 사용자에게 편안함을 주는 인터페이스와 사랑스러운 컬러 감성을 기술로 구현하는 UI/UX 디자이너 지망생입니다. 열정을 품고 매일 새로운 디자인을 하고 있습니다.
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                    <div class="bg-strawberry-50 p-3 rounded-xl border border-strawberry-100 text-center">
+                        <span class="block font-bold text-strawberry-700 text-sm">Photoshop</span>
+                        <span class="text-xs text-gray-500">Post/Image</span>
+                    </div>
+                    <div class="bg-strawberry-50 p-3 rounded-xl border border-strawberry-100 text-center">
+                        <span class="block font-bold text-strawberry-700 text-sm">Figma</span>
+                        <span class="text-xs text-gray-500">UI Design</span>
+                    </div>
+                    <div class="bg-strawberry-50 p-3 rounded-xl border border-strawberry-100 text-center col-span-2 sm:col-span-1">
+                        <span class="block font-bold text-strawberry-700 text-sm">After effcts</span>
+                        <span class="text-xs text-gray-500">Gif/Video</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-</div>
     </section>
 
     <!-- Portfolio 섹션 -->
@@ -256,7 +252,7 @@
         </div>
     </section>
 
-    <!-- 방명록 섹션 (자바스크립트 + 로컬스토리지 활용) -->
+    <!-- 방명록 섹션 -->
     <section id="guestbook" class="py-16 max-w-4xl mx-auto px-6">
         <div class="text-center mb-12">
             <span class="text-strawberry-600 font-bold tracking-wider uppercase text-sm">Guestbook</span>
@@ -291,9 +287,7 @@
         </div>
 
         <!-- 방명록 리스트 표시 영역 -->
-        <div id="guestbook-list" class="space-y-4">
-            <!-- 자바스크립트로 동적 렌더링됨 -->
-        </div>
+        <div id="guestbook-list" class="space-y-4"></div>
     </section>
 
     <!-- Contact 섹션 -->
@@ -319,6 +313,33 @@
                     <span class="text-xs font-bold text-gray-700 uppercase">Instagram</span>
                     <span class="text-xs text-strawberry-600 mt-1 group-hover:underline">@enxeou</span>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini Game 섹션 (Contact 아래 추가된 지뢰찾기) -->
+    <section id="game" class="py-16 bg-gradient-to-b from-white to-strawberry-50 border-t border-strawberry-100">
+        <div class="max-w-xl mx-auto px-6 text-center">
+            <span class="text-strawberry-600 font-bold tracking-wider uppercase text-sm">Mini Game</span>
+            <h2 class="text-3xl font-extrabold text-gray-800 mt-1">딸기밭 지뢰찾기 🍓</h2>
+            <p class="text-gray-500 text-sm mt-2 mb-8">지뢰(💣)를 피해 숨겨진 딸기밭을 모두 열어보세요!</p>
+
+            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-strawberry-200">
+                <!-- 게임 상태 패널 -->
+                <div class="flex items-center justify-between mb-6 bg-strawberry-50 px-4 py-3 rounded-2xl border border-strawberry-100">
+                    <div class="text-sm font-bold text-gray-700">남은 지뢰: <span id="mine-count" class="text-strawberry-600">3</span></div>
+                    <button id="restart-btn" class="bg-gradient-to-r from-strawberry-500 to-hotpink text-white font-bold px-4 py-1.5 rounded-xl text-xs shadow-sm hover:shadow transition-all">
+                        🔄 다시 시작
+                    </button>
+                </div>
+
+                <!-- 지뢰찾기 보드 (8x8 그리드) -->
+                <div id="minesweeper-board" class="grid grid-cols-8 gap-1.5 bg-strawberry-100 p-3 rounded-2xl mx-auto w-fit select-none">
+                    <!-- 자바스크립트로 동적 생성됨 -->
+                </div>
+
+                <!-- 게임 결과 메시지 -->
+                <div id="game-message" class="mt-4 text-sm font-bold h-6 text-strawberry-600"></div>
             </div>
         </div>
     </section>
@@ -389,7 +410,6 @@
                 showSlide(currentSlide - 1);
             }
 
-            // 자동 슬라이드 시작 (4초 간격)
             function startSlideTimer() {
                 slideInterval = setInterval(nextSlide, 4000);
             }
@@ -417,7 +437,6 @@
                 });
             });
 
-            // 초기화
             showSlide(0);
             startSlideTimer();
 
@@ -425,18 +444,15 @@
             const form = document.getElementById('guestbook-form');
             const guestbookList = document.getElementById('guestbook-list');
 
-            // 로컬 스토리지에서 방명록 데이터 불러오기
             function getGuestbookData() {
                 const data = localStorage.getItem('strawberry_guestbook');
                 return data ? JSON.parse(data) : [];
             }
 
-            // 방명록 데이터 저장하기
             function saveGuestbookData(data) {
                 localStorage.setItem('strawberry_guestbook', JSON.stringify(data));
             }
 
-            // 방명록 화면에 렌더링하기
             function renderGuestbook() {
                 const entries = getGuestbookData();
                 guestbookList.innerHTML = '';
@@ -474,14 +490,12 @@
                 });
             }
 
-            // XSS 방지용 유틸 함수
             function escapeHTML(str) {
                 return str.replace(/[&<>'"]/g, 
                     tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
                 );
             }
 
-            // 방명록 등록 이벤트
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const authorInput = document.getElementById('author');
@@ -497,10 +511,9 @@
                 };
 
                 const entries = getGuestbookData();
-                entries.unshift(newEntry); // 최신글이 위로 오도록 추가
+                entries.unshift(newEntry);
                 saveGuestbookData(entries);
 
-                // 폼 초기화
                 authorInput.value = '';
                 passwordInput.value = '';
                 messageInput.value = '';
@@ -508,13 +521,12 @@
                 renderGuestbook();
             });
 
-            // 전역 함수로 삭제 등록 (HTML 인라인 이벤트용)
             window.deleteGuestbookEntry = function(id) {
                 const password = prompt('작성 시 입력한 비밀번호 4자리를 입력해주세요:');
                 if (!password) return;
 
                 let entries = getGuestbookData();
-                const target = entries.find(item => item.id === id);
+                let target = entries.find(item => item.id === id);
 
                 if (target && target.password === password) {
                     entries = entries.filter(item => item.id !== id);
@@ -525,8 +537,175 @@
                 }
             };
 
-            // 초기 방명록 로드
             renderGuestbook();
+
+            // 4. 지뢰찾기 미니게임 로직
+            const BOARD_SIZE = 8;
+            const MINE_COUNT = 6;
+            let board = [];
+            let gameOver = false;
+            let revealedCount = 0;
+
+            const boardElement = document.getElementById('minesweeper-board');
+            const restartBtn = document.getElementById('restart-btn');
+            const mineCountElement = document.getElementById('mine-count');
+            const gameMessageElement = document.getElementById('game-message');
+
+            function initGame() {
+                board = [];
+                gameOver = false;
+                revealedCount = 0;
+                mineCountElement.textContent = MINE_COUNT;
+                gameMessageElement.textContent = '';
+                boardElement.innerHTML = '';
+
+                // 빈 보드 생성
+                for (let r = 0; r < BOARD_SIZE; r++) {
+                    let row = [];
+                    for (let c = 0; c < BOARD_SIZE; c++) {
+                        row.push({
+                            row: r,
+                            col: c,
+                            isMine: false,
+                            isRevealed: false,
+                            isFlagged: false,
+                            neighborMines: 0
+                        });
+                    }
+                    board.push(row);
+                }
+
+                // 지뢰 랜덤 배치
+                let placedMines = 0;
+                while (placedMines < MINE_COUNT) {
+                    let r = Math.floor(Math.random() * BOARD_SIZE);
+                    let c = Math.floor(Math.random() * BOARD_SIZE);
+                    if (!board[r][c].isMine) {
+                        board[r][c].isMine = true;
+                        placedMines++;
+                    }
+                }
+
+                // 주변 지뢰 개수 계산
+                for (let r = 0; r < BOARD_SIZE; r++) {
+                    for (let c = 0; c < BOARD_SIZE; c++) {
+                        if (board[r][c].isMine) continue;
+                        let count = 0;
+                        for (let dr = -1; dr <= 1; dr++) {
+                            for (let dc = -1; dc <= 1; dc++) {
+                                let nr = r + dr;
+                                let nc = c + dc;
+                                if (nr >= 0 && nr < BOARD_SIZE && nc >= 0 && nc < BOARD_SIZE) {
+                                    if (board[nr][nc].isMine) count++;
+                                }
+                            }
+                        }
+                        board[r][c].neighborMines = count;
+                    }
+                }
+
+                renderBoard();
+            }
+
+            function renderBoard() {
+                boardElement.innerHTML = '';
+                for (let r = 0; r < BOARD_SIZE; r++) {
+                    for (let c = 0; c < BOARD_SIZE; c++) {
+                        const cellData = board[r][c];
+                        const cell = document.createElement('button');
+                        cell.className = 'w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-bold text-sm flex items-center justify-center transition-all focus:outline-none';
+                        
+                        if (!cellData.isRevealed) {
+                            cell.className += ' bg-white hover:bg-strawberry-550 border border-strawberry-200 shadow-sm text-strawberry-700';
+                            cell.textContent = cellData.isFlagged ? '🚩' : '';
+                        } else {
+                            cell.className += ' bg-strawberry-100 text-gray-700 border border-strawberry-200';
+                            if (cellData.isMine) {
+                                cell.textContent = '💣';
+                                cell.className += ' bg-red-100';
+                            } else if (cellData.neighborMines > 0) {
+                                cell.textContent = cellData.neighborMines;
+                                // 숫자별 색상 지정
+                                const colors = ['', 'text-blue-600', 'text-green-600', 'text-red-600', 'text-purple-600', 'text-yellow-600'];
+                                cell.className += ` ${colors[cellData.neighborMines] || 'text-gray-700'} font-extrabold`;
+                            } else {
+                                cell.textContent = '';
+                            }
+                        }
+
+                        // 좌클릭: 칸 열기
+                        cell.addEventListener('click', () => {
+                            if (gameOver || cellData.isRevealed || cellData.isFlagged) return;
+                            revealCell(r, c);
+                        });
+
+                        // 우클릭: 깃발 꽂기
+                        cell.addEventListener('contextmenu', (e) => {
+                            e.preventDefault();
+                            if (gameOver || cellData.isRevealed) return;
+                            cellData.isFlagged = !cellData.isFlagged;
+                            renderBoard();
+                        });
+
+                        boardElement.appendChild(cell);
+                    }
+                }
+            }
+
+            function revealCell(r, c) {
+                const cell = board[r][c];
+                if (cell.isRevealed || cell.isFlagged) return;
+
+                cell.isRevealed = true;
+
+                if (cell.isMine) {
+                    gameOver = true;
+                    revealAllMines();
+                    gameMessageElement.textContent = '💥 지뢰를 밟았어요! 다시 도전해보세요.';
+                    return;
+                }
+
+                revealedCount++;
+
+                // 주변 지뢰가 0개이면 연쇄 오픈 (BFS)
+                if (cell.neighborMines === 0) {
+                    for (let dr = -1; dr <= 1; dr++) {
+                        for (let dc = -1; dc <= 1; dc++) {
+                            let nr = r + dr;
+                            let nc = c + dc;
+                            if (nr >= 0 && nr < BOARD_SIZE && nc >= 0 && nc < BOARD_SIZE) {
+                                if (!board[nr][nc].isRevealed) {
+                                    revealCell(nr, nc);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // 승리 조건 체크 (지뢰를 제외한 모든 칸을 열었을 때)
+                if (revealedCount === (BOARD_SIZE * BOARD_SIZE - MINE_COUNT)) {
+                    gameOver = true;
+                    gameMessageElement.textContent = '🎉 축하합니다! 모든 지뢰를 피했어요! 💕';
+                }
+
+                renderBoard();
+            }
+
+            function revealAllMines() {
+                for (let r = 0; r < BOARD_SIZE; r++) {
+                    for (let c = 0; c < BOARD_SIZE; c++) {
+                        if (board[r][c].isMine) {
+                            board[r][c].isRevealed = true;
+                        }
+                    }
+                }
+                renderBoard();
+            }
+
+            restartBtn.addEventListener('click', initGame);
+
+            // 게임 초기화 실행
+            initGame();
         });
     </script>
 </body>
