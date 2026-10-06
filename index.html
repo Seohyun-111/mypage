@@ -69,7 +69,7 @@
                 <a href="#portfolio" class="hover:text-strawberry-600 transition-colors">Portfolio</a>
                 <a href="#guestbook" class="hover:text-strawberry-600 transition-colors">Guestbook</a>
                 <a href="#contact" class="hover:text-strawberry-600 transition-colors">Contact</a>
-                <a href="#game" class="hover:text-strawberry-600 transition-colors">Mini Game</a>
+                <a href="#game" class="hover:text-strawberry-600 transition-colors">Mini Games</a>
             </nav>
             <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-strawberry-600 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,7 +83,7 @@
             <a href="#portfolio" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Portfolio</a>
             <a href="#guestbook" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Guestbook</a>
             <a href="#contact" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Contact</a>
-            <a href="#game" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Mini Game</a>
+            <a href="#game" class="block text-gray-700 hover:text-strawberry-600 font-medium mobile-link">Mini Games</a>
         </div>
     </header>
 
@@ -317,17 +317,19 @@
         </div>
     </section>
 
-    <!-- Mini Game 섹션 (Contact 아래 추가된 지뢰찾기) -->
+    <!-- Mini Game 섹션 (지뢰찾기 + 딸기우유 받기 게임) -->
     <section id="game" class="py-16 bg-gradient-to-b from-white to-strawberry-50 border-t border-strawberry-100">
         <div class="max-w-xl mx-auto px-6 text-center">
-            <span class="text-strawberry-600 font-bold tracking-wider uppercase text-sm">Mini Game</span>
-            <h2 class="text-3xl font-extrabold text-gray-800 mt-1">딸기밭 지뢰찾기 🍓</h2>
-            <p class="text-gray-500 text-sm mt-2 mb-8">지뢰(💣)를 피해 숨겨진 딸기밭을 모두 열어보세요!</p>
+            <span class="text-strawberry-600 font-bold tracking-wider uppercase text-sm">Mini Games</span>
+            <h2 class="text-3xl font-extrabold text-gray-800 mt-1">쉬어가는 미니 게임 코너 🍓</h2>
+            <p class="text-gray-500 text-sm mt-2 mb-10">재미있는 게임으로 잠시 머물다 가세요!</p>
 
-            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-strawberry-200">
+            <!-- 게임 1: 딸기밭 지뢰찾기 -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-strawberry-200 mb-10">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">1. 딸기밭 지뢰찾기 💣</h3>
                 <!-- 게임 상태 패널 -->
                 <div class="flex items-center justify-between mb-6 bg-strawberry-50 px-4 py-3 rounded-2xl border border-strawberry-100">
-                    <div class="text-sm font-bold text-gray-700">남은 지뢰: <span id="mine-count" class="text-strawberry-600">3</span></div>
+                    <div class="text-sm font-bold text-gray-700">남은 지뢰: <span id="mine-count" class="text-strawberry-600">10</span></div>
                     <button id="restart-btn" class="bg-gradient-to-r from-strawberry-500 to-hotpink text-white font-bold px-4 py-1.5 rounded-xl text-xs shadow-sm hover:shadow transition-all">
                         🔄 다시 시작
                     </button>
@@ -340,6 +342,24 @@
 
                 <!-- 게임 결과 메시지 -->
                 <div id="game-message" class="mt-4 text-sm font-bold h-6 text-strawberry-600"></div>
+            </div>
+
+            <!-- 게임 2: 딸기우유 받기 캐치 게임 -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-strawberry-200">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">2. 딸기우유 받기 캐치! 🥛</h3>
+                <p class="text-xs text-gray-500 mb-4">좌우 방향키 또는 마우스로 컵을 움직여 떨어지는 딸기를 받으세요!</p>
+                
+                <div class="flex items-center justify-between mb-4 bg-strawberry-50 px-4 py-3 rounded-2xl border border-strawberry-100">
+                    <div class="text-sm font-bold text-gray-700">점수: <span id="catch-score" class="text-strawberry-600">0</span>점</div>
+                    <button id="catch-start-btn" class="bg-gradient-to-r from-strawberry-500 to-hotpink text-white font-bold px-4 py-1.5 rounded-xl text-xs shadow-sm hover:shadow transition-all">
+                        🎮 게임 시작
+                    </button>
+                </div>
+
+                <!-- 캐치 게임 캔버스 -->
+                <div class="relative w-full overflow-hidden rounded-2xl border border-strawberry-200 bg-strawberry-50/50 flex justify-center">
+                    <canvas id="catch-canvas" width="360" height="400" class="block bg-gradient-to-b from-strawberry-50 to-strawberry-100/50 cursor-pointer"></canvas>
+                </div>
             </div>
         </div>
     </section>
@@ -539,9 +559,9 @@
 
             renderGuestbook();
 
-            // 4. 지뢰찾기 미니게임 로직
+            // 4. 게임 1: 지뢰찾기 미니게임 로직 (지뢰 10개 설정)
             const BOARD_SIZE = 8;
-            const MINE_COUNT = 6;
+            const MINE_COUNT = 10;
             let board = [];
             let gameOver = false;
             let revealedCount = 0;
@@ -559,7 +579,6 @@
                 gameMessageElement.textContent = '';
                 boardElement.innerHTML = '';
 
-                // 빈 보드 생성
                 for (let r = 0; r < BOARD_SIZE; r++) {
                     let row = [];
                     for (let c = 0; c < BOARD_SIZE; c++) {
@@ -575,7 +594,6 @@
                     board.push(row);
                 }
 
-                // 지뢰 랜덤 배치
                 let placedMines = 0;
                 while (placedMines < MINE_COUNT) {
                     let r = Math.floor(Math.random() * BOARD_SIZE);
@@ -586,7 +604,6 @@
                     }
                 }
 
-                // 주변 지뢰 개수 계산
                 for (let r = 0; r < BOARD_SIZE; r++) {
                     for (let c = 0; c < BOARD_SIZE; c++) {
                         if (board[r][c].isMine) continue;
@@ -616,7 +633,7 @@
                         cell.className = 'w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-bold text-sm flex items-center justify-center transition-all focus:outline-none';
                         
                         if (!cellData.isRevealed) {
-                            cell.className += ' bg-white hover:bg-strawberry-550 border border-strawberry-200 shadow-sm text-strawberry-700';
+                            cell.className += ' bg-white hover:bg-strawberry-50 border border-strawberry-200 shadow-sm text-strawberry-700';
                             cell.textContent = cellData.isFlagged ? '🚩' : '';
                         } else {
                             cell.className += ' bg-strawberry-100 text-gray-700 border border-strawberry-200';
@@ -625,7 +642,6 @@
                                 cell.className += ' bg-red-100';
                             } else if (cellData.neighborMines > 0) {
                                 cell.textContent = cellData.neighborMines;
-                                // 숫자별 색상 지정
                                 const colors = ['', 'text-blue-600', 'text-green-600', 'text-red-600', 'text-purple-600', 'text-yellow-600'];
                                 cell.className += ` ${colors[cellData.neighborMines] || 'text-gray-700'} font-extrabold`;
                             } else {
@@ -633,13 +649,11 @@
                             }
                         }
 
-                        // 좌클릭: 칸 열기
                         cell.addEventListener('click', () => {
                             if (gameOver || cellData.isRevealed || cellData.isFlagged) return;
                             revealCell(r, c);
                         });
 
-                        // 우클릭: 깃발 꽂기
                         cell.addEventListener('contextmenu', (e) => {
                             e.preventDefault();
                             if (gameOver || cellData.isRevealed) return;
@@ -667,7 +681,6 @@
 
                 revealedCount++;
 
-                // 주변 지뢰가 0개이면 연쇄 오픈 (BFS)
                 if (cell.neighborMines === 0) {
                     for (let dr = -1; dr <= 1; dr++) {
                         for (let dc = -1; dc <= 1; dc++) {
@@ -682,7 +695,6 @@
                     }
                 }
 
-                // 승리 조건 체크 (지뢰를 제외한 모든 칸을 열었을 때)
                 if (revealedCount === (BOARD_SIZE * BOARD_SIZE - MINE_COUNT)) {
                     gameOver = true;
                     gameMessageElement.textContent = '🎉 축하합니다! 모든 지뢰를 피했어요! 💕';
@@ -703,9 +715,134 @@
             }
 
             restartBtn.addEventListener('click', initGame);
-
-            // 게임 초기화 실행
             initGame();
+
+            // 5. 게임 2: 딸기우유 받기 캐치 게임 로직
+            const canvas = document.getElementById('catch-canvas');
+            const ctx = canvas.getContext('2d');
+            const catchScoreElement = document.getElementById('catch-score');
+            const catchStartBtn = document.getElementById('catch-start-btn');
+
+            let catchScore = 0;
+            let catchGameRunning = false;
+            let basket = { x: 140, y: 350, width: 80, height: 30, speed: 8 };
+            let items = [];
+            let spawnTimer = 0;
+            let keys = { left: false, right: false };
+
+            function startCatchGame() {
+                catchScore = 0;
+                catchScoreElement.textContent = catchScore;
+                items = [];
+                basket.x = 140;
+                catchGameRunning = true;
+                catchStartBtn.textContent = '🕹️ 게임 진행 중...';
+            }
+
+            catchStartBtn.addEventListener('click', () => {
+                startCatchGame();
+            });
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') keys.left = true;
+                if (e.key === 'ArrowRight') keys.right = true;
+            });
+
+            window.addEventListener('keyup', (e) => {
+                if (e.key === 'ArrowLeft') keys.left = false;
+                if (e.key === 'ArrowRight') keys.right = false;
+            });
+
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                basket.x = mouseX - basket.width / 2;
+                if (basket.x < 0) basket.x = 0;
+                if (basket.x > canvas.width - basket.width) basket.x = canvas.width - basket.width;
+            });
+
+            function updateCatchGame() {
+                if (!catchGameRunning) return;
+
+                if (keys.left) basket.x -= basket.speed;
+                if (keys.right) basket.x += basket.speed;
+                if (basket.x < 0) basket.x = 0;
+                if (basket.x > canvas.width - basket.width) basket.x = canvas.width - basket.width;
+
+                spawnTimer++;
+                if (spawnTimer > 40) {
+                    spawnTimer = 0;
+                    const types = ['🍓', '🍓', '🍓', '🍰', '🍋'];
+                    const type = types[Math.floor(Math.random() * types.length)];
+                    items.push({
+                        x: Math.random() * (canvas.width - 30),
+                        y: -30,
+                        size: 28,
+                        speed: 3 + Math.random() * 2.5,
+                        type: type
+                    });
+                }
+
+                for (let i = items.length - 1; i >= 0; i--) {
+                    let item = items[i];
+                    item.y += item.speed;
+
+                    if (
+                        item.y + item.size >= basket.y &&
+                        item.y <= basket.y + basket.height &&
+                        item.x + item.size >= basket.x &&
+                        item.x <= basket.x + basket.width
+                    ) {
+                        if (item.type === '🍋') {
+                            catchScore = Math.max(0, catchScore - 3);
+                        } else if (item.type === '🍰') {
+                            catchScore += 3;
+                        } else {
+                            catchScore += 1;
+                        }
+                        catchScoreElement.textContent = catchScore;
+                        items.splice(i, 1);
+                        continue;
+                    }
+
+                    if (item.y > canvas.height) {
+                        items.splice(i, 1);
+                    }
+                }
+            }
+
+            function drawCatchGame() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                if (!catchGameRunning) {
+                    ctx.fillStyle = '#ff7fa0';
+                    ctx.font = 'bold 15px Noto Sans KR';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('위의 [게임 시작] 버튼을 눌러주세요! 🍓', canvas.width / 2, canvas.height / 2);
+                }
+
+                ctx.fillStyle = '#ff4d79';
+                ctx.beginPath();
+                ctx.roundRect(basket.x, basket.y, basket.width, basket.height, [0, 0, 15, 15]);
+                ctx.fill();
+
+                ctx.fillStyle = '#ffd1dc';
+                ctx.fillRect(basket.x + 5, basket.y + 5, basket.width - 10, 5);
+
+                ctx.font = '24px sans-serif';
+                ctx.textAlign = 'left';
+                items.forEach(item => {
+                    ctx.fillText(item.type, item.x, item.y + 24);
+                });
+            }
+
+            function catchGameLoop() {
+                updateCatchGame();
+                drawCatchGame();
+                requestAnimationFrame(catchGameLoop);
+            }
+
+            catchGameLoop();
         });
     </script>
 </body>
